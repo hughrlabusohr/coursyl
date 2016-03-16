@@ -14,9 +14,17 @@
 //= require jquery_ujs
 //= require d3
 //= require_tree .
-$(function() {
-  // This will select everything with the class smoothScroll
-  // This should prevent problems with carousel, scrollspy, etc...
+
+  function disableButton() {
+    var button = document.getElementsByClassName("actions");
+    button.lastElementChild.disabled = 'true';
+  };
+
+  function hideRow() {
+    var row = document.getElementsByClassName("row");
+    row[row.length - 1].style.visibility = "hidden";
+  };
+
   $('.smoothScroll').click(function() {
     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
       var target = $(this.hash);
