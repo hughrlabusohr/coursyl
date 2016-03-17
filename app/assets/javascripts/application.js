@@ -15,39 +15,48 @@
 //= require d3
 //= require_tree .
 
-function disableButton(button) {
+// Disable Button
+  // function disableButton(button) {
   // var button = document.getElementsByClassName("actions");
   // button.lastElementChild.disabled = 'true';
   // submitButton.form.submit();
-  $(button).prop("disabled", true);
-  $(button).closest("form").submit();
-};
-$(function bindSubmitClick() {
-  $("input[type=submit]").on("click", disableButton);
-};
+
+function disableSubmitButton() {
+  $(event.target).prop("disabled", true);
+  $(event.target).closest("form").submit();
+}
+
+function bindSubmitClick() {
+  $("input[type=submit]").on("click", disableSubmitButton);
+}
+
 $(bindSubmitClick);
 
-function hideRow() {
+// Hide Last Row
+  // function hideLastRow() {
     // var row = document.getElementsByClassName("row");
     // row[row.length - 1].style.visibility = "hidden";
-    var row = $(event.target).closest(".row")
-    row.css("display", "none")
-};
+// function hideLastRow() {
+//   var row = $(event.target).closest(".row");
+//   row.css("display", "none");
+// };
 
-function showLastRow() {
-  var row = $(event.target).closest(".row")
-  row.css("visibility", "block");
-};
+// Show Last Row
+// function showLastRow() {
+//   var row = $(event.target).closest(".row");
+//   row.css("visibility", "block");
+// };
 
 // Delete Last Row
-function deleteLastRow() {
+  // function deleteLastRow() {
   // var row = document.getElementsByClassName("row");
   // // var row = event.target.parentNode.parentNode;
   // row.style.display = "none";
   // var check_box = row.lastElementChild.lastElementChild;
   // checkbox.selected;
-  var row = $(event.target).closest(".row")
-  row.css("display", "none")
+function deleteLastRow() {
+  var row = $(event.target).closest(".row");
+  row.css("display", "none");
   var checkbox = $(event.target).siblings().last();
   checkbox.prop("checked", true);
 }
@@ -56,25 +65,24 @@ function deleteLastRow() {
 function displayGrade(displayType) {
   // var associations = document.getElementbyId("associations");
   var associations = $("#associations");
-  var last_section = associations.lastElementChild;
+  var last_section = associations.children().last();
   if (displayType) {
     last_section.css("display", "block");
-    var clicked = "True"
-} else {
+  } else {
     last_section.css("display", "none");
   }
 }
+
 
 // Hide The Last Row
 function hideLastRow() {
   // if ($("#associations").length > 0){
   displayGrade(false);
-  }
 }
 
 $(hideLastRow);
 
-
+// Smooth Scroll
 $('.smoothScroll').click(function() {
   if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
     var target = $(this.hash);
@@ -87,8 +95,17 @@ $('.smoothScroll').click(function() {
     }
   }
 });
-});
 
-// Change the speed to whatever you want
-// Personally i think 1000 is too much
-// Try 800 or below, it seems not too much but it will make a difference
+$(function calendar() {
+    var cal1x = new CalendarPopup("testdiv1");
+    $('#datetimepicker6').datetimepicker();
+    $('#datetimepicker7').datetimepicker({
+        useCurrent: false //Important! See issue #1075
+    });
+    $("#datetimepicker6").on("dp.change", function (e) {
+        $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+    });
+    $("#datetimepicker7").on("dp.change", function (e) {
+        $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+    });
+});
