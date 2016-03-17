@@ -14,13 +14,6 @@
 //= require jquery_ujs
 //= require d3
 //= require_tree .
-
-// Disable Button
-  // function disableButton(button) {
-  // var button = document.getElementsByClassName("actions");
-  // button.lastElementChild.disabled = 'true';
-  // submitButton.form.submit();
-
 function disableSubmitButton() {
   $(event.target).prop("disabled", true);
   $(event.target).closest("form").submit();
@@ -32,28 +25,6 @@ function bindSubmitClick() {
 
 $(bindSubmitClick);
 
-// Hide Last Row
-  // function hideLastRow() {
-    // var row = document.getElementsByClassName("row");
-    // row[row.length - 1].style.visibility = "hidden";
-// function hideLastRow() {
-//   var row = $(event.target).closest(".row");
-//   row.css("display", "none");
-// };
-
-// Show Last Row
-// function showLastRow() {
-//   var row = $(event.target).closest(".row");
-//   row.css("visibility", "block");
-// };
-
-// Delete Last Row
-  // function deleteLastRow() {
-  // var row = document.getElementsByClassName("row");
-  // // var row = event.target.parentNode.parentNode;
-  // row.style.display = "none";
-  // var check_box = row.lastElementChild.lastElementChild;
-  // checkbox.selected;
 function deleteLastRow() {
   var row = $(event.target).closest(".row");
   row.css("display", "none");
@@ -63,20 +34,18 @@ function deleteLastRow() {
 
 // Display Grade
 function displayGrade(displayType) {
-  // var associations = document.getElementbyId("associations");
   var associations = $("#associations");
   var last_section = associations.children().last();
-  if (displayType) {
-    last_section.css("display", "block");
+    if (displayType) {
+      last_section.css("display", "block");
   } else {
-    last_section.css("display", "none");
-  }
+      last_section.css("display", "none");
+    }
 }
 
 
 // Hide The Last Row
 function hideLastRow() {
-  // if ($("#associations").length > 0){
   displayGrade(false);
 }
 
@@ -97,7 +66,6 @@ $('.smoothScroll').click(function() {
 });
 
 $(function calendar() {
-    var cal1x = new CalendarPopup("testdiv1");
     $('#datetimepicker6').datetimepicker();
     $('#datetimepicker7').datetimepicker({
         useCurrent: false //Important! See issue #1075
